@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" name="investor" packages="" monitorInterval="30">
+    <Appenders>
+        <RollingFile name="rollingFile"
+                     fileName="D:/projects/codes/intellij/investor/deploy/production/logs/investor.log"
+                     filePattern="investor.%d{yyyy-MM-dd}.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <!--<SizeBasedTriggeringPolicy size="250 MB"/>-->
+            </Policies>
+        </RollingFile>
+        <Console name="Console">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <logger name="com.investor" level="INFO">
+            <AppenderRef ref="rollingFile"/>
+        </logger>
+        <Root level="ERROR">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
